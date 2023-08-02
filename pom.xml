@@ -14,7 +14,7 @@
     <name>wallet_module</name>
     <description>wallet_module</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>19</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -70,6 +70,11 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>3.0.2</version>
         </dependency>
     </dependencies>
 
