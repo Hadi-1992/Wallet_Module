@@ -24,5 +24,4 @@ public class WalletEntity extends AbstractEntity {
     private Long cvv2;
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TransactionEntity> transactionEntities;
-
 }

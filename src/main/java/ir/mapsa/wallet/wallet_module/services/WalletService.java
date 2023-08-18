@@ -29,7 +29,8 @@ public class WalletService extends AbstractService<WalletEntity, WalletRepositor
 
     @Async
     public CompletableFuture<Object> sendCardDetails(String walletUser) {
-        WalletEntity wallet = repository.findByWalletUser(walletUser);
+        WalletEntity wallet = repository.findByWalletUser(walletUser).get(0);
+
 //        if (wallet != null) {
         Long cardNumber = wallet.getCardNumber();
         Long cvv2 = wallet.getCvv2();
@@ -44,7 +45,7 @@ public class WalletService extends AbstractService<WalletEntity, WalletRepositor
     }
 
     public void updateBalance(String walletUser, Long amount) throws ServiceException {
-        WalletEntity wallet = repository.findByWalletUser(walletUser);
+        WalletEntity wallet = repository.findByWalletUser(walletUser).get(0);
         if (wallet != null) {
             Long currentBalance = wallet.getBalance();
             wallet.setBalance(currentBalance + amount);
@@ -55,10 +56,11 @@ public class WalletService extends AbstractService<WalletEntity, WalletRepositor
     }
 
     public void deleteWallet(String walletUser) {
-        WalletEntity walletEntity = repository.findByWalletUser(walletUser);
+        WalletEntity walletEntity = repository.findByWalletUser(walletUser).get(0);
         repository.delete(walletEntity);
     }
 
+    @Async
     public void transfer(TransactionRequest transactionRequest) throws ServiceException {
         TransactionEntity transactionEntity = new TransactionEntity();
         WalletEntity walletSender = repository.findByCardNumber(transactionRequest.getSenderCardNumber());
@@ -82,5 +84,4 @@ public class WalletService extends AbstractService<WalletEntity, WalletRepositor
         transactionEntity.setDate(new Date());
         transactionService.saveTransaction(transactionEntity);
     }
-
 }

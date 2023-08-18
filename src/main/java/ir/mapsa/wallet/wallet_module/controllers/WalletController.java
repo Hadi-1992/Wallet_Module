@@ -2,7 +2,6 @@ package ir.mapsa.wallet.wallet_module.controllers;
 
 import ir.mapsa.wallet.wallet_module.exceptionhandlers.exceptions.ServiceException;
 import ir.mapsa.wallet.wallet_module.models.dtoes.WalletDto;
-import ir.mapsa.wallet.wallet_module.models.entities.TransactionEntity;
 import ir.mapsa.wallet.wallet_module.models.entities.WalletEntity;
 import ir.mapsa.wallet.wallet_module.models.requests.TransactionRequest;
 import ir.mapsa.wallet.wallet_module.services.WalletService;
@@ -45,5 +44,7 @@ public class WalletController extends AbstractController<WalletEntity, WalletDto
     public void transfer(@RequestBody TransactionRequest transaction) throws ServiceException {
         service.transfer(transaction);
     }
+
+
 
 }

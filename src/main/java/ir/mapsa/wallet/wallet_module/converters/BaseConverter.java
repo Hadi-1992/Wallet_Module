@@ -1,7 +1,10 @@
 package ir.mapsa.wallet.wallet_module.converters;
 
 
+import org.springframework.http.ResponseEntity;
+
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 public interface BaseConverter<E, D> {
@@ -35,7 +38,5 @@ public interface BaseConverter<E, D> {
         return null;
 
     }
+
 }
-
-
-

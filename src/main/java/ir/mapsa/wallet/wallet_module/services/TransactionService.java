@@ -16,9 +16,8 @@ public class TransactionService extends AbstractService<TransactionEntity, Trans
         repository.save(transaction);
 
     }
-
+    public List<TransactionEntity> getTransaction (String walletSender){
+        List<TransactionEntity> transaction =  repository.findBySender_WalletUser(walletSender);
+        return transaction;
+    }
 }
-
-
-
-
